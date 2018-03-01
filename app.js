@@ -4,6 +4,7 @@ import stream from 'stream'; // ES6 synthax to import node stream
 import fs from 'fs'; // File System module
 import es from 'event-stream'; // Event Stream module
 
+// let dataCities = fs.readFileSync('./data/cities_canada-usa.tsv', 'utf-8')
 
 const scoreCityByName = (currentCity, citySearched) => { 
     // console.log('city Searched : \n', citySearched);
@@ -65,6 +66,7 @@ app.get('/suggestions', (request, response)=> {
     let first = true;
  
     if(request.query.q || (request.query.longitude && request.query.latitude)){
+
         let readStream = fs.createReadStream('./data/cities_canada-usa.tsv') // Reads from file in chunks of 64 kb
                             .pipe(es.split('\n')) // Split Strings at new line
                             .pipe(es.mapSync((data) => { 
