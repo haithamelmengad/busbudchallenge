@@ -131,7 +131,7 @@ app.get('/suggestions', (request, response)=> {
         });
 
     } else {
-        response.send('No input! Input something ye bish')
+        response.send('No input! Input something')
     }    
     // request.query.q = the city name
     // request.query.longitude = longitude
